@@ -1,7 +1,9 @@
-export const generateFormFromAI =
-  async (prompt) => {
-    try {
-      const response = await fetch(
+export async function generateFormFromAI(
+  prompt
+) {
+  try {
+    const response =
+      await fetch(
         "http://localhost:11434/api/generate",
         {
           method: "POST",
@@ -10,62 +12,56 @@ export const generateFormFromAI =
               "application/json",
           },
           body: JSON.stringify({
-            model: "llama3",
+            model: "mistral",
             prompt: `
-You are a form generator AI.
+Generate a JSON form structure.
 
-Return ONLY valid JSON.
-
-DO NOT explain anything.
-DO NOT add text before or after JSON.
-
-User Request:
+Prompt:
 ${prompt}
 
-Format:
+Return ONLY valid JSON in this format:
+
 {
-  "formName": "Job Application",
+  "formName": "Form Name",
   "fields": [
     {
-      "fieldName": "Full Name",
+      "fieldName": "Name",
       "fieldType": "text",
-      "required": true
-    },
-    {
-      "fieldName": "Email",
-      "fieldType": "email",
       "required": true
     }
   ]
 }
 `,
-            format: "json",
             stream: false,
           }),
         }
       );
 
-      const data =
-        await response.json();
+    const data =
+      await response.json();
 
-      console.log(
-        "AI Response:",
-        data.response
+    const text =
+      data.response.trim();
+
+    const cleanJSON =
+      text.replace(
+        /```json|```/g,
+        ""
       );
 
-      return JSON.parse(
-        data.response
-      );
-    } catch (error) {
-      console.error(
-        "Ollama Error:",
-        error
-      );
+    return JSON.parse(
+      cleanJSON
+    );
+  } catch (error) {
+    console.error(
+      "Ollama Error:",
+      error
+    );
 
-      alert(
-        "AI failed to generate form"
-      );
+    alert(
+      "AI generation requires a locally running Ollama server.\n\nRun 'ollama run mistral' or 'ollama run llama3' on your computer and try again."
+    );
 
-      return null;
-    }
-  };
+    return null;
+  }
+}
