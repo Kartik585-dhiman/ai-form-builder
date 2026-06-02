@@ -1,43 +1,49 @@
 # AI-Powered Form Builder
 
-An AI-powered web application that generates fully functional forms using natural language prompts and a locally hosted open-source Large Language Model (LLM) via Ollama.
+This is an AI-powered form builder built using **React, Tailwind CSS, and Ollama**. The application allows users to generate forms using natural language prompts and also create forms manually using a wizard-based interface.
 
----
-
-## Project Overview
-
-AI-Powered Form Builder allows users to describe a form in natural language, and the application automatically generates a functional, styled form with relevant fields, input types, validations, and a live preview.
-
-The application also supports manual form creation through a wizard-style interface.
-
-### Example Prompt
+For example, if a user enters:
 
 `Create a student registration form`
 
-### Example Generated Fields
+the AI generates a form with fields like:
 
-- Name (Text)
-- Email (Email)
-- Student ID (Text)
-- Date of Birth (Date)
+- Name
+- Email
+- Student ID
+- Date of Birth
+
+The project uses a **locally hosted open-source LLM (Llama 3 / Mistral)** through **Ollama** for AI form generation.
+
+---
+
+## Live Project
+
+**Live Website:**
+https://ai-from-builder.netlify.app/
+
+**GitHub Repository:**
+https://github.com/Kartik585-dhiman/ai-form-builder.git
 
 ---
 
 ## Features
 
-### AI Form Generation
+### 1. AI Form Generation
 
 - Generate forms using natural language prompts
-- Powered by a locally hosted open-source LLM via Ollama
-- Automatically detects relevant form fields and input types
+- Uses locally hosted LLM via Ollama
+- Automatically detects suitable fields and input types
 
-### Wizard-Based Form Builder
+### 2. Wizard-Based Form Builder
 
-- Dynamic form creation
-- Add multiple fields manually
-- Configure form details step-by-step
+- Create forms manually step by step
+- Add custom fields dynamically
+- Configure form details easily
 
-### Supported Input Types
+### 3. Supported Field Types
+
+The application currently supports:
 
 - Text
 - Email
@@ -46,35 +52,39 @@ The application also supports manual form creation through a wizard-style interf
 - File Upload
 - Checkbox
 
-### Validation Support
+### 4. Form Validation
 
 - Required field validation
 - Dynamic validation rendering
 
-### Layout Options
+### 5. Layout Options
+
+Users can choose different layouts for forms:
 
 - Single Column
 - Two Column
 - Multi Column
-- Dynamic layout rendering based on user selection
 
-### Live Form Preview
+### 6. Live Preview
 
 - Real-time form preview
-- Dynamic UI rendering
+- Instantly updates when changes are made
 
-### Export Functionality
+### 7. Export Code
 
-- Export React code
-- Export HTML code
-- Copy-to-clipboard support
+Users can export:
 
-### UI Features
+- HTML Code
+- React Code
 
-- Dark / Light Theme Toggle
-- Loading Spinner during AI generation
-- Toast Notifications
-- Clean and responsive UI
+with copy-to-clipboard functionality.
+
+### 8. UI Features
+
+- Dark / Light mode
+- Loading spinner during AI generation
+- Toast notifications
+- Clean responsive UI
 
 ---
 
@@ -86,46 +96,67 @@ The application also supports manual form creation through a wizard-style interf
 - Tailwind CSS
 - Vite
 
-### AI Integration
+### AI Model
 
 - Ollama
-- Llama 3 / Mistral (Local LLM)
+- Llama 3
+- Mistral
 
 ---
 
-## Important Note
+## Important Note About AI Generation
 
-This project uses a **locally hosted LLM through Ollama**.
+This project uses **Ollama locally**, so AI generation works only when Ollama is running on your machine.
 
-AI form generation works only when Ollama is running locally on your machine.
+The deployed Netlify version supports:
 
-The deployed frontend version supports UI and frontend functionality, while AI generation requires a local Ollama instance.
+- Manual form generation
+- Theme switching
+- Live preview
+- Export functionality
+- Form submission
+
+However, AI form generation requires a local Ollama server.
+
+Run one of these commands before using AI generation locally:
+
+For Mistral:
+
+```bash id="m8vg9r"
+ollama run mistral
+```
+
+For Llama 3:
+
+```bash id="v0m7u1"
+ollama run llama3
+```
 
 ---
 
 ## Installation & Setup
 
-### 1. Clone Repository
+### Clone the repository
 
-```bash
-git clone <repository-link>
+```bash id="kwqg8n"
+git clone https://github.com/Kartik585-dhiman/ai-form-builder.git
 ```
 
-### 2. Navigate to Project Folder
+### Go to project folder
 
-```bash
+```bash id="sn7y8w"
 cd ai-form-builder
 ```
 
-### 3. Install Dependencies
+### Install dependencies
 
-```bash
+```bash id="mryq6j"
 npm install
 ```
 
-### 4. Start Development Server
+### Start development server
 
-```bash
+```bash id="ryv7pi"
 npm run dev
 ```
 
@@ -133,35 +164,35 @@ npm run dev
 
 ## Ollama Setup
 
-### Install Ollama
+### Step 1: Install Ollama
 
-Download and install Ollama from:
+Download Ollama from:
 
 https://ollama.com/download
 
-### Run LLM Model
+### Step 2: Run model
 
-For Llama 3:
+Run any one model:
 
-```bash
-ollama run llama3
-```
-
-OR for Mistral:
-
-```bash
+```bash id="z0bmyh"
 ollama run mistral
 ```
 
-Keep Ollama running while using AI generation.
+OR
+
+```bash id="eyqob7"
+ollama run llama3
+```
+
+Make sure Ollama is running while using AI generation.
 
 ---
 
-## Access the Application
+## Local Development URL
 
-Open in browser:
+Open this in browser:
 
-```txt
+```txt id="y1r0ig"
 http://localhost:5173
 ```
 
@@ -169,7 +200,7 @@ http://localhost:5173
 
 ## Project Structure
 
-```txt
+```txt id="yzjlwm"
 src/
 │── components/
 │   ├── AIPrompt.jsx
@@ -191,9 +222,11 @@ src/
 
 ## Future Improvements
 
-- Advanced validation rules
+Some features that can be added in future:
+
 - Multi-step form generation
-- Drag-and-drop form builder
+- Advanced validations
+- Drag and drop form builder
 - Database integration
 - Cloud-hosted AI support
 - Better mobile responsiveness
